@@ -36,6 +36,7 @@ export interface IHourlyWeather extends ICurrentWeather {
 }
 
 export interface IDailyWeather extends Omit<IHourlyWeather, 'feels_like' | 'temp'> {
+  summary: string
   feels_like: {
     day: number
     eve: number

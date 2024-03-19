@@ -2,6 +2,18 @@ export class DateTimeHelpers {
   static convertToFullDate({ unix, shorthand }: { unix: number; shorthand?: boolean }) {
     return convertUnixTimestampToFullDate(unix, shorthand)
   }
+
+  static convertTo24HrsFormat({ unix }: { unix: number }) {
+    return convertUnixTimestampTo24Hrs(unix)
+  }
+
+  static isPresentTime({ unix }: { unix: number }) {
+    return determinePresentTime(unix)
+  }
+
+  static isToday({ unix }: { unix: number }) {
+    return determineIsToday(unix)
+  }
 }
 
 /**
@@ -12,8 +24,6 @@ export class DateTimeHelpers {
 function convertUnixTimestampToFullDate(unixTimestamp: number, short?: boolean): string {
   // Convert Unix timestamp to milliseconds
   const milliseconds = unixTimestamp * 1000
-
-  // Create a new Date object
   const date = new Date(milliseconds)
 
   // Options for formatting the date
@@ -37,24 +47,52 @@ function convertUnixTimestampToFullDate(unixTimestamp: number, short?: boolean):
   return formattedDate
 }
 
-function convertUnixTimestampToAMPM(unixTimestamp: number) {
+/**
+ * Convert unix timestamp into time format
+ * @input: 1616425200 (in ISO format: 2021-03-22T10:00:00Z)
+ * @returns : 10:00 AM
+ */
+function convertUnixTimestampTo24Hrs(unixTimestamp: number): string {
   // Convert Unix timestamp to milliseconds
   const milliseconds = unixTimestamp * 1000
-
-  // Create a new Date object
   const date = new Date(milliseconds)
 
-  // Get hours, minutes, and seconds from the date object
-  let hours = date.getHours()
-  const minutes = date.getMinutes()
+  // Get hours from the date object
+  const hours = ('0' + date.getHours()).slice(-2) // Ensure two digits
 
-  // Convert hours to AM/PM format
-  const ampm = hours >= 12 ? 'PM' : 'AM'
-  hours %= 12
-  hours = hours || 12 // Handle midnight (0 hours)
+  return hours
+}
 
-  // Format the time string
-  const timeString = `${hours}:${minutes.toString().padStart(2, '0')} ${ampm}`
+function determinePresentTime(unix: number): boolean {
+  // Get the current hour and Unix timestamp hour
+  const currentHour = new Date().getHours()
+  const timestampHour = new Date(unix * 1000).getHours()
 
-  return timeString
+  // Return true if both hours are the same
+  return currentHour === timestampHour
+}
+
+function determineIsToday(unix: number): boolean {
+  // Convert Unix timestamp to milliseconds
+  const milliseconds = unix * 1000
+
+  // Create Date objects for the current date and the date derived from the Unix timestamp
+  const currentDate = new Date()
+  const timestampDate = new Date(milliseconds)
+
+  // Compare the year, month, and day parts of the dates
+  const currentYear = currentDate.getFullYear()
+  const currentMonth = currentDate.getMonth()
+  const currentDay = currentDate.getDate()
+
+  const timestampYear = timestampDate.getFullYear()
+  const timestampMonth = timestampDate.getMonth()
+  const timestampDay = timestampDate.getDate()
+
+  // Return true if the dates are the same, indicating that the timestamp is for today
+  return currentYear === timestampYear && currentMonth === timestampMonth && currentDay === timestampDay
+}
+
+function determineDayOrNight(unix: number) {
+  const present = new Date()
 }
