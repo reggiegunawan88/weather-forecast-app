@@ -2,7 +2,7 @@ import { SunIcon } from '../Icons/TemperatureIcons'
 
 export default function Header() {
   return (
-    <header className="p-2 border-b">
+    <header className="p-2 border-b border-opacity-40 text-white">
       <div className="flex flex-col gap-y-2 text-center items-center">
         <div className="flex flex-row items-center gap-x-2">
           <SunIcon className="w-8 h-8 text-amber-400" />

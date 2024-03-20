@@ -13,7 +13,7 @@ export default function HourlyForecast({ data }: HourlyForecastProps) {
   return (
     <div className="rounded-lg bg-slate-600/40">
       <ScrollArea>
-        <div className="flex items-center gap-x-6 p-4">
+        <div className="flex items-center gap-x-6 p-4 laptop:justify-between">
           {data.slice(0, 12).map((item) => (
             <HourlyForecastWidget key={item.dt} data={item} />
           ))}
