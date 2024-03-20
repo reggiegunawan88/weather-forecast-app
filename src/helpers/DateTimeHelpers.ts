@@ -50,7 +50,7 @@ function convertUnixTimestampToFullDate(unixTimestamp: number, short?: boolean):
 /**
  * Convert unix timestamp into time format
  * @input: 1616425200 (in ISO format: 2021-03-22T10:00:00Z)
- * @returns : 10:00 AM
+ * @returns : 10 | 15 | 22 , etc
  */
 function convertUnixTimestampTo24Hrs(unixTimestamp: number): string {
   // Convert Unix timestamp to milliseconds
@@ -91,8 +91,4 @@ function determineIsToday(unix: number): boolean {
 
   // Return true if the dates are the same, indicating that the timestamp is for today
   return currentYear === timestampYear && currentMonth === timestampMonth && currentDay === timestampDay
-}
-
-function determineDayOrNight(unix: number) {
-  const present = new Date()
 }

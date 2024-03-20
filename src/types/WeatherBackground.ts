@@ -8,7 +8,7 @@ export interface WeatherImage {
   created_at: string
   current_user_collections: []
   description: null
-  height: 3264
+  height: number
   id: string
   liked_by_user: boolean
   likes: number
