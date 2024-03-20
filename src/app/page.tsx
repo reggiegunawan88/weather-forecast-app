@@ -8,17 +8,17 @@ import WeatherDescription from '@/containers/Homepage/WeatherDescription'
 
 import EmptyState from '@/components/EmptyState'
 import Image from 'next/image'
-import useHomepage from './hooks/useHomepage'
+import useHomepage from './hooks/Homepage/useHomepage'
 
 export default function Homepage() {
-  const { forecast, forecastError, weatherImageUrl, weatherImageError } = useHomepage()
+  const { forecast, isForecastError, weatherImageUrl, isWeatherImageError } = useHomepage()
 
-  if (!forecastError && forecastError)
-    return <EmptyState description="An error occurred while fetching weather forecast data, please try again later." />
-  if (weatherImageError) return <EmptyState description="An error occurred while fetching weather background image, please try again later." />
+  if (isForecastError) return <EmptyState description="An error occurred while fetching weather forecast data, please try again later." />
+
+  if (isWeatherImageError) return <EmptyState description="An error occurred while fetching weather background image, please try again later." />
 
   if (!forecast || !weatherImageUrl) {
-    // Return full flex empty container so it won't affect display CLS
+    // Return full flex empty container so it won't affect display CLS while loading the data
     return <main className="flex-1"></main>
   }
 
