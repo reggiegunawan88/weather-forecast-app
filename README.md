@@ -29,7 +29,9 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 - Desktop design
 
-<p align="center>![image](https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/eb9f38e1-ce3f-467d-9312-fbc3e5f7c94c)</p>
+<p align="center>
+  <img src="https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/eb9f38e1-ce3f-467d-9312-fbc3e5f7c94c">
+</p>
 
 ## Learn More
 
