@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Screenshots
+- Mobile design
+
+<p align="center">
+  ![image](https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/06cfd4b8-b063-4720-9086-e5f08a933e9f)
+</p>
+
+- Desktop design
+
+<p align="center>
+  ![image](https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/48f1c190-a854-468a-957c-59ec8e858068)
+  </p>
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
