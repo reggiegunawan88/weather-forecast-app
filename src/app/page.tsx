@@ -36,8 +36,8 @@ export default function Homepage() {
         <CurrentForecast data={forecast.current} />
         <HourlyForecast data={forecast.hourly} />
         <DailyForecast data={forecast.daily} />
-        <WeatherDescription data={forecast.daily[0]} />
-        <WeatherAdvice data={forecast.current} />
+        <WeatherDescription summary={forecast.daily[0].summary} />
+        <WeatherAdvice temp={forecast.current.temp} weatherDesc={forecast.current.weather[0].description} />
       </div>
     </main>
   )

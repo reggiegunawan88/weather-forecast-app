@@ -1,5 +1,5 @@
 interface Props {
-  className: string;
+  className: string
 }
 
 export function SunIcon(props: Props) {
@@ -15,6 +15,7 @@ export function SunIcon(props: Props) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-label="sun-icon"
     >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2" />
@@ -26,7 +27,7 @@ export function SunIcon(props: Props) {
       <path d="m6.34 17.66-1.41 1.41" />
       <path d="m19.07 4.93-1.41 1.41" />
     </svg>
-  );
+  )
 }
 
 export function WindIcon(props: Props) {
@@ -42,12 +43,13 @@ export function WindIcon(props: Props) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-label="wind-icon"
     >
       <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
       <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
       <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
     </svg>
-  );
+  )
 }
 
 export function DropletIcon(props: Props) {
@@ -63,8 +65,9 @@ export function DropletIcon(props: Props) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-label="droplet-icon"
     >
       <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
     </svg>
-  );
+  )
 }

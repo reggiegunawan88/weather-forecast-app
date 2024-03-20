@@ -1,12 +1,10 @@
-import { ICurrentWeather } from '@/types/Weather'
-
 export class WeatherHelpers {
   static getWeatherKeyword(keyword: string) {
     return WEATHER_TO_PHOTO_KEYWORDS[keyword]
   }
 
-  static getWeatherAdvice(data: ICurrentWeather) {
-    return generateWeatherAdvice(data)
+  static getWeatherAdvice({ temp, weatherDesc }: { temp: number; weatherDesc: string }) {
+    return generateWeatherAdvice(temp, weatherDesc)
   }
 }
 
@@ -21,11 +19,8 @@ export const WEATHER_TO_PHOTO_KEYWORDS: WeatherKeywords = {
   snow: 'snowy',
 }
 
-function generateWeatherAdvice(param: ICurrentWeather) {
-  const temperature = param.temp
-  const weatherDesc = param.weather[0].description
-
-  if (temperature > 25 && weatherDesc.includes('clear')) {
+function generateWeatherAdvice(temp: number, weatherDesc: string) {
+  if (temp > 25 && weatherDesc.includes('clear')) {
     return "It's hot and sunny. Wear sunscreen to protect your skin and don't forget to stay hydrated by drinking plenty of water. One more thing, wear a hat to shield yourself from the sun 😀."
   }
   if (weatherDesc.includes('rain')) {

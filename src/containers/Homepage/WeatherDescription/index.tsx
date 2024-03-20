@@ -1,18 +1,17 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { IDailyWeather } from '@/types/Weather'
 
 interface Props {
-  data: IDailyWeather
+  summary: string
 }
 
-export default function WeatherDescription({ data }: Props) {
+export default function WeatherDescription({ summary }: Props) {
   return (
     <Accordion className="rounded-lg px-4 bg-widget" type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>Detailed Description</AccordionTrigger>
         <AccordionContent>
           <div className="py-3">
-            <span className="capitalize">{data.summary}.</span>
+            <span className="capitalize">{summary}.</span>
           </div>
         </AccordionContent>
       </AccordionItem>
