@@ -8,7 +8,7 @@ import WeatherDescription from '@/containers/Homepage/WeatherDescription'
 
 import EmptyState from '@/components/EmptyState'
 import Image from 'next/image'
-import useHomepage from './hooks/Homepage/useHomepage'
+import useHomepage from './hooks/pages/useHomepage'
 
 export default function Homepage() {
   const { isLocationEnabled, forecast, isForecastError, weatherImageUrl, isWeatherImageError } = useHomepage()

@@ -10,7 +10,7 @@ interface Props {
   keyword: string
 }
 
-function useWeatherImageData({ forecast, keyword }: Props) {
+function useUnsplashSWR({ forecast, keyword }: Props) {
   const { data, error } = useSWR<WeatherImageResponse>(
     forecast ? getUnsplashAPIUrl({ queryString: WeatherHelpers.getWeatherKeyword(keyword) }) : null,
     fetcher,
@@ -25,4 +25,4 @@ function useWeatherImageData({ forecast, keyword }: Props) {
   }
 }
 
-export default useWeatherImageData
+export default useUnsplashSWR
