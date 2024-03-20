@@ -1,26 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather Forecast App
 
-## Getting Started
+Weather Forecast App is a simple mobile-first web app that provides users with current weather conditions and forecasts.
+The goal is to utilizing the OpenWeatherMap API for weather data and the Unsplash API for dynamic background images based on the current weather conditions, so that we can deliver a visually engaging and informative forecast app to user.
 
-First, run the development server:
+## Installation
+
+Use the package manager npm or yarn to install the app.
+
+```bash
+npm install
+# or
+yarn install
+```
+
+## Environment Setup
+
+To run the app properly, you must setting up API and Access keys for both OpenWeatherMap and Unsplash using your own keys.
+
+To retrieve OpenWeatherMap API key, you can go here: https://home.openweathermap.org/api_keys
+To retrieve Unsplash Access Key, you can go here: https://home.openweathermap.org/api_keys
+
+After you successfully retrieved both keys, create a new .env file on root level project and copy paste the content from .env.example file, and fill each of the API key value.
+It will looks like this later:
+
+```bash
+# BASE URL
+NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL=https://openweathermap.org
+NEXT_PUBLIC_OPEN_WEATHER_API_BASE_URL=https://api.openweathermap.org
+NEXT_PUBLIC_UNSPLASH_BASE_URL=https://api.unsplash.com
+
+# SECRET
+NEXT_PUBLIC_OPEN_WEATHER_API_KEY={your-api-key}
+NEXT_PUBLIC_UNSPLASH_ACCESS_KEY={your-access-key}
+```
+
+## Getting started
+
+After package installation and environment setup, you can run the development server by these commands:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Core Technologies
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. NextJS v14.1.3 (https://nextjs.org/blog/next-14-1)
+2. TailwindCSS v3.4 (https://tailwindcss.com/blog/tailwindcss-v3-4)
+3. Shadcn UI (https://ui.shadcn.com/docs)
+4. TypeScript v5 (https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html)
+5. SWR by Vercel (https://swr.vercel.app/docs/api)
+6. OpenWeatherMap API (https://openweathermap.org/api/one-call-3)
+7. Unsplash API (https://unsplash.com/documentation#search-photos )
+8. React Testing Library (https://testing-library.com/docs/)
+
+## Application Features and Functionalities
+
+### Weather Data Display
+
+- Display current weather conditions including temperature, humidity, wind speed, and a brief description (e.g., sunny, cloudy).
+- Provide a 5-day weather forecast showing daily high and low temperatures and weather conditions.
+- Dynamic background that adapt to current weather conditions (sunny, cloudy, rainy, or snowy).
+- Provide description and advice based on daily weather condition.
+
+### Dynamic Background
+
+- Utilize the Unsplash API to fetch and display background images that correspond to the current weather conditions (e.g., sunny, rainy, cloudy, or snowy).
+- Ensure that the background image adapt to the current weather conditions.
+
+### Responsive Design
+
+- Provide fully responsive (but mobile-first) for an optimal viewing experience across a wide range of devices.
+
+## Project Structure
 
 ## Screenshots
+
 - Mobile design
 
 <p align="center">
@@ -39,17 +97,17 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
   <img src="https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/1035937b-4649-4840-93a7-ff6b8a8cfc6f">
 </p>
 
-## Learn More
+## Additional Reference
 
-To learn more about Next.js, take a look at the following resources:
+- Screen viewport: https://web.dev/blog/viewport-units?source=post_page-----102231e2ed56--------------------------------
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This application is deployed using Vercel. It also has an automatic auto deploy for both production and preview live URL (master branch: live prod, develop: preview).
+You can see the live production link here: https://weather-forecast-app-reggie.vercel.app
 
-## Deploy on Vercel
+Check [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Copyright
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Copyright © 2024, Reggie Gunawan.
