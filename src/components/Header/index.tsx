@@ -8,7 +8,10 @@ export default function Header() {
           <SunIcon className="w-8 h-8 text-amber-400" />
           <span className="text-xl font-bold">Weather</span>
         </div>
-        <span className="text-sm">Always take the weather with you</span>
+        <div className="flex flex-col">
+          <span className="text-sm">Always take the weather with you</span>
+          <span className="text-xs">Made by Reggie Gunawan</span>
+        </div>
       </div>
     </header>
   )

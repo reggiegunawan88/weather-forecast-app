@@ -19,7 +19,7 @@ export default function Homepage() {
 
   return (
     <main className="flex-1 overflow-auto p-4 bg-cover text-white" style={{ backgroundImage: `url(${weatherImage?.results[0].urls.raw})` }}>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
         <CurrentForecast data={forecast.current} />
         <HourlyForecast data={forecast.hourly} />
         <DailyForecast data={forecast.daily} />
