@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('h-screen flex flex-col', inter.className)}>
+      <body className={cn('flex flex-col h-dvh', inter.className)}>
         <Header />
         <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />
