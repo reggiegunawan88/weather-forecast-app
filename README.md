@@ -33,6 +33,12 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
   <img src="https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/b01f0f3f-b73c-4a30-afda-3934f2642c3d">
 </p>
 
+- Lighthouse Score
+
+<p align="center">
+  <img src="https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/1035937b-4649-4840-93a7-ff6b8a8cfc6f">
+</p>
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
