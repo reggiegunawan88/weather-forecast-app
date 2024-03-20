@@ -11,7 +11,9 @@ import Image from 'next/image'
 import useHomepage from './hooks/Homepage/useHomepage'
 
 export default function Homepage() {
-  const { forecast, isForecastError, weatherImageUrl, isWeatherImageError } = useHomepage()
+  const { isLocationEnabled, forecast, isForecastError, weatherImageUrl, isWeatherImageError } = useHomepage()
+
+  if (isLocationEnabled === false) return <EmptyState description="Please enable your device location and reload the page." />
 
   if (isForecastError) return <EmptyState description="An error occurred while fetching weather forecast data, please try again later." />
 
