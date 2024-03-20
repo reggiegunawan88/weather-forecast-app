@@ -25,9 +25,11 @@ export default function Homepage() {
   }
 
   return (
-    <main className="relative flex-1 overflow-auto p-4 bg-cover text-white">
-      {/* Background image */}
-      <Image alt="bg-image" className="z-0" src={weatherImageUrl} layout="fill" objectFit="cover" priority />
+    <main className="flex-1 overflow-auto p-4 bg-cover text-white">
+      {/* Full screen background image */}
+      <div className="fixed top-0 left-0 h-screen w-full -z-10">
+        <Image alt="bg-image" className="object-cover" src={weatherImageUrl} fill priority />
+      </div>
 
       {/* Page contents */}
       <div className="relative z-10 flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
