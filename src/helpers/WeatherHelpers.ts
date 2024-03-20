@@ -26,7 +26,7 @@ function generateWeatherAdvice(param: ICurrentWeather) {
   const weatherDesc = param.weather[0].description
 
   if (temperature > 25 && weatherDesc.includes('clear')) {
-    return "It's hot and sunny. Wear sunscreen to protect your skin and don't forget to stay hydrated by drinking plenty of water. One more thing, wear a hat to shield yourself from the sun &#128515;."
+    return "It's hot and sunny. Wear sunscreen to protect your skin and don't forget to stay hydrated by drinking plenty of water. One more thing, wear a hat to shield yourself from the sun 😀."
   }
   if (weatherDesc.includes('rain')) {
     return "It's raining today! Don't forget to bring your umbrella."

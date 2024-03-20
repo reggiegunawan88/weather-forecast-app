@@ -1,69 +1,30 @@
 'use client'
 
-import Loading from '@/app/loading'
 import CurrentForecast from '@/containers/Homepage/CurrentForecast'
 import DailyForecast from '@/containers/Homepage/DailyForecast'
 import HourlyForecast from '@/containers/Homepage/HourlyForecast'
 import WeatherAdvice from '@/containers/Homepage/WeatherAdvice'
 import WeatherDescription from '@/containers/Homepage/WeatherDescription'
-import { WeatherHelpers } from '@/helpers/WeatherHelpers'
-import getForecastData from '@/services/OpenWeather/getForecastData'
-import getWeatherImage from '@/services/Unsplash/getWeatherImage'
-import { Weather } from '@/types/Weather'
-import { WeatherBackgrondResponse } from '@/types/WeatherBackground'
 
-import { useEffect, useState } from 'react'
-// import Loading from './loading'
+import EmptyState from '@/components/EmptyState'
+import useHomepage from './hooks/useHomepage'
 
 export default function Homepage() {
-  const [latitude, setLatitude] = useState<number | null>(null)
-  const [longitude, setLongitude] = useState<number | null>(null)
-  const [weather, setWeather] = useState<Weather | null>(null)
-  const [bgImage, setBgImage] = useState('')
+  const { forecast, forecastError, weatherImage } = useHomepage()
 
-  const getData = async () => {
-    if (latitude && longitude) {
-      try {
-        const weather = await getForecastData({
-          lat: latitude,
-          lon: longitude,
-        })
-        const weatherKeyword = WeatherHelpers.getWeatherKeyword(weather.current.weather[0].main.toLowerCase())
-        const weatherBgResponse: WeatherBackgrondResponse = await getWeatherImage({ queryString: weatherKeyword })
-        setWeather(weather)
-        setBgImage(weatherBgResponse.results[0].urls.raw)
-      } catch (error) {
-        // no-op
-        console.error(error)
-      }
-    }
-  }
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async ({ coords }) => {
-      const { latitude, longitude } = coords
-      console.log(latitude, longitude)
-      setLatitude(latitude)
-      setLongitude(longitude)
-    })
-  }, [])
-
-  useEffect(() => {
-    getData()
-  }, [latitude])
-
-  if (!weather || !bgImage) {
-    return <Loading />
+  if (forecastError) return <EmptyState description="Error occurred while fetching weather forecast data, please try again later." />
+  if (!forecast || !weatherImage) {
+    return <main className="flex-1"></main>
   }
 
   return (
-    <main className="flex-1 overflow-auto p-4 bg-cover bg-center text-white" style={{ backgroundImage: `url(${bgImage})` }}>
+    <main className="flex-1 overflow-auto p-4 bg-cover text-white" style={{ backgroundImage: `url(${weatherImage?.results[0].urls.raw})` }}>
       <div className="flex flex-col gap-y-4">
-        <CurrentForecast data={weather.current} />
-        <HourlyForecast data={weather.hourly} />
-        <DailyForecast data={weather.daily} />
-        <WeatherDescription data={weather.daily[0]} />
-        <WeatherAdvice data={weather.current} />
+        <CurrentForecast data={forecast.current} />
+        <HourlyForecast data={forecast.hourly} />
+        <DailyForecast data={forecast.daily} />
+        <WeatherDescription data={forecast.daily[0]} />
+        <WeatherAdvice data={forecast.current} />
       </div>
     </main>
   )

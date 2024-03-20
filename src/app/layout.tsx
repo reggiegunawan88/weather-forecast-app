@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { cn } from '@/lib/utils'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn('h-screen flex flex-col', inter.className)}>
         <Header />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />
       </body>
     </html>

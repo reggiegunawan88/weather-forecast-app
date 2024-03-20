@@ -13,7 +13,7 @@ export default function CurrentForecast({ data }: CurrentForecastProps) {
   return (
     <div className="flex flex-col gap-y-4 items-center bg-widget rounded-lg p-4">
       {/* Date info */}
-      <span className="text-2xl font-semibold">{DateTimeHelpers.convertToFullDate({ unix: data.dt })}</span>
+      <span className="text-2xl font-semibold text-center">{DateTimeHelpers.convertToFullDate({ unix: data.dt })}</span>
       {/* Weather info */}
       <div className="flex flex-row items-center gap-x-2">
         <Image

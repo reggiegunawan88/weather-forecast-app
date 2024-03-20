@@ -1,4 +1,4 @@
-export interface WeatherBackground {
+export interface WeatherImage {
   alt_description: string
   alternative_slugs: any
   asset_type: string
@@ -31,8 +31,8 @@ export interface WeatherBackground {
   width: number
 }
 
-export interface WeatherBackgrondResponse {
-  results: WeatherBackground[]
+export interface WeatherImageResponse {
+  results: WeatherImage[]
   total: number
   total_pages: number
 }
