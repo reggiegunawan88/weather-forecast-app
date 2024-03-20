@@ -25,7 +25,7 @@ export default function HourlyForecast({ data }: HourlyForecastProps) {
 }
 
 // Composing component
-// TODO: Refactor later if this component is used in multiple components
+// TODO: Refactor later if this component is used in multiple places
 interface IForecastWidget {
   data: IHourlyWeather
 }

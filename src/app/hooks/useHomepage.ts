@@ -12,6 +12,7 @@ export const useHomepage = () => {
   const [longitude, setLongitude] = useState<number | null>(null)
 
   useEffect(() => {
+    // Retrieve latitude and longitude on client side
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       const { latitude, longitude } = coords
       setLatitude(latitude)
@@ -36,7 +37,8 @@ export const useHomepage = () => {
   return {
     forecast,
     forecastError,
-    weatherImage,
+    weatherImageUrl: weatherImage?.results[0].urls.raw,
+    weatherImageError,
   }
 }
 

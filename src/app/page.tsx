@@ -7,19 +7,28 @@ import WeatherAdvice from '@/containers/Homepage/WeatherAdvice'
 import WeatherDescription from '@/containers/Homepage/WeatherDescription'
 
 import EmptyState from '@/components/EmptyState'
+import Image from 'next/image'
 import useHomepage from './hooks/useHomepage'
 
 export default function Homepage() {
-  const { forecast, forecastError, weatherImage } = useHomepage()
+  const { forecast, forecastError, weatherImageUrl, weatherImageError } = useHomepage()
 
-  if (forecastError) return <EmptyState description="Error occurred while fetching weather forecast data, please try again later." />
-  if (!forecast || !weatherImage) {
+  if (!forecastError && forecastError)
+    return <EmptyState description="An error occurred while fetching weather forecast data, please try again later." />
+  if (weatherImageError) return <EmptyState description="An error occurred while fetching weather background image, please try again later." />
+
+  if (!forecast || !weatherImageUrl) {
+    // Return full flex empty container so it won't affect display CLS
     return <main className="flex-1"></main>
   }
 
   return (
-    <main className="flex-1 overflow-auto p-4 bg-cover text-white" style={{ backgroundImage: `url(${weatherImage?.results[0].urls.raw})` }}>
-      <div className="flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
+    <main className="relative flex-1 overflow-auto p-4 bg-cover text-white">
+      {/* Background image */}
+      <Image alt="bg-image" className="z-0" src={weatherImageUrl} layout="fill" objectFit="cover" priority />
+
+      {/* Page contents */}
+      <div className="relative z-10 flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
         <CurrentForecast data={forecast.current} />
         <HourlyForecast data={forecast.hourly} />
         <DailyForecast data={forecast.daily} />

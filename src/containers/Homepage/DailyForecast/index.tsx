@@ -27,7 +27,7 @@ export default function DailyForecast({ data }: DailyForecastProps) {
 }
 
 // Composing component
-// TODO: Refactor later if this component is used in multiple components
+// TODO: Refactor later if this component is used in multiple places
 interface DailyForecastWidgetProps {
   data: IDailyWeather
 }
