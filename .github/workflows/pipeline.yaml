@@ -6,15 +6,12 @@ on:
     branches:
       - master
       - develop
-env:
-  # Setting an environment variable with the value of a configuration variable
-  OPEN_WEATHER_MAP_PUBLIC_API: ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
 
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
     env:
-      Test: TestEnv
+      OPEN_WEATHER_MAP_PUBLIC_API: TestEnv
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js 18
@@ -22,10 +19,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Test print env
-        run: |
-          echo env name = ${{ env.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
-          echo env test = $Test
+      - name: Read variable
+        run: echo var name = ${{ vars.APP_NAME }}
+
+      - name: Read environment
+        run: echo env name = ${{ env.OPEN_WEATHER_MAP_PUBLIC_API }}
 
       # - name: Install dependencies
       #   run: npm install
