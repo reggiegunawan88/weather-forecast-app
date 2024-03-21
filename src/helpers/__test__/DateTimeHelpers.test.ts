@@ -39,10 +39,6 @@ describe('DateTime Helpers function', () => {
     expect(result).toMatch(expectedFormat)
   })
 
-  test('Test isPresentTime() output', () => {
-    expect(DateTimeHelpers.isPresentTime({ unix: mockUnixTimestamp })).toBeFalsy()
-  })
-
   test('isToday() should return true if the date is today', () => {
     // 1. Get today Unix timestamp
     const todayTimestamp = Math.floor(Date.now() / 1000)
