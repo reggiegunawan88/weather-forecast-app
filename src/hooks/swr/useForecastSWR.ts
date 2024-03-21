@@ -9,7 +9,7 @@ interface Props {
 }
 
 function useForecastSWR({ lat, lon }: Props) {
-  const { data, error } = useSWR<Weather>(lat && lon ? getForecastAPIUrl({ lat: -6.9217, lon: 107.6071 }) : null, fetcher)
+  const { data, error } = useSWR<Weather>(lat && lon ? getForecastAPIUrl({ lat, lon }) : null, fetcher)
 
   return {
     forecast: data,
