@@ -5,13 +5,22 @@ export class WeatherHelpers {
     return WEATHER_TO_PHOTO_KEYWORDS[keyword]
   }
 
-  static getWeatherAdvice({ temp, weatherDesc }: { temp: number; weatherDesc: string }) {
-    return generateWeatherAdvice(temp, weatherDesc)
+  static getWeatherAdvice(weatherCode: number) {
+    return generateWeatherAdvice(weatherCode)
   }
 }
 
 interface WeatherKeywords {
   [key: string]: string
+}
+
+// Docs reference: https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+enum WEATHER_CODE {
+  CLOUDS = 801,
+  CLEAR = 800,
+  SNOW = 600,
+  RAIN = 500,
+  THUNDER = 200,
 }
 
 export const WEATHER_TO_PHOTO_KEYWORDS: WeatherKeywords = {
@@ -21,12 +30,23 @@ export const WEATHER_TO_PHOTO_KEYWORDS: WeatherKeywords = {
   snow: 'snowy',
 }
 
-function generateWeatherAdvice(temp: number, weatherDesc: string) {
-  if (temp > 25 && weatherDesc.includes('clear')) {
-    return "It's hot and sunny. Wear sunscreen to protect your skin and don't forget to stay hydrated by drinking plenty of water. One more thing, wear a hat to shield yourself from the sun 😀."
+function generateWeatherAdvice(weatherCode: number) {
+  switch (true) {
+    case weatherCode === WEATHER_CODE.CLEAR:
+      return "It's sunny day!. Weather conditions are good and moderate. Enjoy your day!"
+
+    case weatherCode >= WEATHER_CODE.CLOUDS:
+      return 'Keep an eye on weather updates throughout the day, as conditions can change rapidly.'
+
+    case weatherCode >= WEATHER_CODE.SNOW:
+      return "It's snowy now! Dress in layers to stay warm, and wear waterproof outer layers to keep dry in the snow."
+
+    case weatherCode >= WEATHER_CODE.RAIN:
+      return "It's raining today! Don't forget to bring your umbrella."
+
+    case weatherCode >= WEATHER_CODE.THUNDER:
+      return 'Avoid using water-related appliances such as showers, sinks, and washing machines during a thunderstorm, as lightning can travel through plumbing. Stay safe!'
+    default:
+      break
   }
-  if (weatherDesc.includes('rain')) {
-    return "It's raining today! Don't forget to bring your umbrella."
-  }
-  return 'Weather conditions are good and moderate. Enjoy your day!'
 }
