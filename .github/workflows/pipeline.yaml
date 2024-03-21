@@ -10,8 +10,7 @@ on:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    env:
-      OPEN_WEATHER_MAP_PUBLIC_API: TestEnv
+    environment: Preview
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js 18
@@ -20,7 +19,9 @@ jobs:
           node-version: 18
 
       - name: Read variable
-        run: echo var name = ${{ vars.APP_NAME }}
+        run: |
+          echo var name = ${{ vars.APP_NAME }}
+          echo env name = ${{ vars.OPEN_WEATHER_MAP_PUBLIC_API }}
 
       - name: Read environment
         run: echo env name = ${{ env.OPEN_WEATHER_MAP_PUBLIC_API }}
