@@ -10,13 +10,10 @@ import EmptyState from '@/components/common/EmptyState'
 import Image from 'next/image'
 import useHomepage from './hooks/useHomepage'
 
-interface HomepageProps {
-  lat: number
-  lon: number
-}
+export default function Homepage() {
+  const { isLocationEnabled, forecast, isForecastError, weatherImageUrl, isWeatherImageError } = useHomepage()
 
-export default function Homepage({ lat, lon }: HomepageProps) {
-  const { forecast, isForecastError, weatherImageUrl, isWeatherImageError } = useHomepage({ lat, lon })
+  if (isLocationEnabled === false) return <EmptyState description="Please activate your device location and reload the page." />
 
   if (isForecastError) return <EmptyState description="An error occurred while fetching weather forecast data, please try again later." />
 
