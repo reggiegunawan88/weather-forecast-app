@@ -15,10 +15,11 @@ yarn install
 
 ## Environment Setup
 
-To run the app properly, you must setting up API and Access keys for both OpenWeatherMap and Unsplash using your own keys.
+To run the app properly on development environment, you must setting up API endpoint and Access keys for OpenWeatherMap, Unsplash, and Geoapify using your own keys.
 
 To retrieve OpenWeatherMap API key, you can go here: https://home.openweathermap.org/api_keys
 To retrieve Unsplash Access Key, you can go here: https://home.openweathermap.org/api_keys
+To retrieve Geoapify Access Key, you can go here: https://www.geoapify.com/get-started-with-maps-api
 
 After you successfully retrieved both keys, create a new .env file on root level project and copy paste the content from .env.example file, and fill each of the API key value.
 It will looks like this later:
@@ -28,10 +29,12 @@ It will looks like this later:
 NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL=https://openweathermap.org
 NEXT_PUBLIC_OPEN_WEATHER_API_BASE_URL=https://api.openweathermap.org
 NEXT_PUBLIC_UNSPLASH_BASE_URL=https://api.unsplash.com
+NEXT_PUBLIC_GEOAPIFY_BASE_URL=https://api.geoapify.com
 
-# SECRET
+# SECRET KEYS
 NEXT_PUBLIC_OPEN_WEATHER_API_KEY={your-api-key}
 NEXT_PUBLIC_UNSPLASH_ACCESS_KEY={your-access-key}
+NEXT_PUBLIC_GEOAPIFY_ACCESS_KEY={your-access-key}
 ```
 
 ## Getting started
@@ -48,14 +51,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Core Technologies
 
-1. NextJS v14.1.3 (https://nextjs.org/blog/next-14-1)
-2. TailwindCSS v3.4 (https://tailwindcss.com/blog/tailwindcss-v3-4)
-3. Shadcn UI (https://ui.shadcn.com/docs)
-4. TypeScript v5 (https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html)
-5. SWR by Vercel (https://swr.vercel.app/docs/api)
-6. OpenWeatherMap API (https://openweathermap.org/api/one-call-3)
-7. Unsplash API (https://unsplash.com/documentation#search-photos )
-8. React Testing Library (https://testing-library.com/docs/)
+1. NextJS v14.1.3 (https://nextjs.org/blog/next-14-1): Main framework for SSR and SSG.
+2. TailwindCSS v3.4 (https://tailwindcss.com/blog/tailwindcss-v3-4): For utilities styling application.
+3. Shadcn UI (https://ui.shadcn.com/docs): For UI component based utilities.
+4. TypeScript v5 (https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html): For static typing and type annotations needs.
+5. SWR by Vercel (https://swr.vercel.app/docs/api): For client side data fetching and caching.
+6. OpenWeatherMap API (https://openweathermap.org/api/one-call-3): API endpoint for fetching weather forecasts.
+7. Unsplash API (https://unsplash.com/documentation#search-photos): API endpoint for dynamic background image based on weather condition.
+8. Geoapify API (https://www.geoapify.com/): API endpoint for fetching user current location precisely.
+9. React Testing Library (https://testing-library.com/docs/): For unit test needs.
 
 ## Application Features and Functionalities
 
@@ -63,7 +67,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Display current weather conditions including temperature, humidity, wind speed, and a brief description (e.g., sunny, cloudy).
 - Provide a 5-day weather forecast showing daily high and low temperatures and weather conditions.
-- Dynamic background that adapt to current weather conditions (sunny, cloudy, rainy, or snowy).
+- Dynamic background that adapt to current weather conditions (sunny, cloudy, rainy, or snowy). Also for sunny and cloudy, the dynamic background able to adapt based on day or night time.
 - Provide description and advice based on daily weather condition.
 
 ### Dynamic Background
