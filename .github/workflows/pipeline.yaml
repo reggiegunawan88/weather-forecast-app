@@ -8,11 +8,13 @@ on:
       - develop
 env:
   # Setting an environment variable with the value of a configuration variable
-  NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL: ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
+  OPEN_WEATHER_MAP_PUBLIC_API: ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
 
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    env:
+      Test: TestEnv
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js 18
@@ -22,8 +24,8 @@ jobs:
 
       - name: Test print env
         run: |
-          echo env local name = $NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL
-          echo env github name = ${{vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL}}
+          echo env name = ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
+          echo env test = $Test
 
       # - name: Install dependencies
       #   run: npm install
