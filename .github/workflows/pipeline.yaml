@@ -42,7 +42,6 @@ jobs:
           node-version: 18
 
       - name: Deploy to Vercel
-        if: github.ref == 'refs/heads/master'
-        run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
-        env:
-          CI: true
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }
