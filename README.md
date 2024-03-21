@@ -19,7 +19,6 @@ To run the app properly on development environment, you must setting up API endp
 
 To retrieve OpenWeatherMap API key, you can go here: https://home.openweathermap.org/api_keys
 To retrieve Unsplash Access Key, you can go here: https://home.openweathermap.org/api_keys
-To retrieve Geoapify Access Key, you can go here: https://www.geoapify.com/get-started-with-maps-api
 
 After you successfully retrieved both keys, create a new .env file on root level project and copy paste the content from .env.example file, and fill each of the API key value.
 It will looks like this later:
@@ -29,12 +28,10 @@ It will looks like this later:
 NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL=https://openweathermap.org
 NEXT_PUBLIC_OPEN_WEATHER_API_BASE_URL=https://api.openweathermap.org
 NEXT_PUBLIC_UNSPLASH_BASE_URL=https://api.unsplash.com
-NEXT_PUBLIC_GEOAPIFY_BASE_URL=https://api.geoapify.com
 
 # SECRET KEYS
 NEXT_PUBLIC_OPEN_WEATHER_API_KEY={your-api-key}
 NEXT_PUBLIC_UNSPLASH_ACCESS_KEY={your-access-key}
-NEXT_PUBLIC_GEOAPIFY_ACCESS_KEY={your-access-key}
 ```
 
 ## Getting started
@@ -98,7 +95,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Lighthouse Score
 
 <p align="center">
-  <img src="https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/1035937b-4649-4840-93a7-ff6b8a8cfc6f">
+  <img src="https://github.com/reggiegunawan88/weather-forecast-app/assets/44907916/bc904614-1b3e-4dad-91a4-b5b68f253ae5">
 </p>
 
 ## Additional Reference
