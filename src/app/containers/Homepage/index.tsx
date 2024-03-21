@@ -28,7 +28,7 @@ export default function Homepage({ lat, lon }: HomepageProps) {
   }
 
   return (
-    <section>
+    <section aria-label="homepage-content">
       {/* Full screen background image */}
       <div className="fixed top-0 left-0 h-screen w-full -z-10">
         <Image alt="bg-image" className="object-cover" src={weatherImageUrl} fill priority blurDataURL={weatherImageUrl} />
@@ -40,7 +40,7 @@ export default function Homepage({ lat, lon }: HomepageProps) {
         <HourlyForecast data={forecast.hourly} />
         <DailyForecast data={forecast.daily} />
         <WeatherDescription summary={forecast.daily[0].summary} />
-        <WeatherAdvice temp={forecast.current.temp} weatherDesc={forecast.current.weather[0].description} />
+        <WeatherAdvice weatherId={forecast.current.weather[0].id} />
       </div>
     </section>
   )

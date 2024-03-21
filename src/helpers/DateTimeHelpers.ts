@@ -52,7 +52,7 @@ function convertUnixTimestampToFullDate(unixTimestamp: number, short?: boolean):
 }
 
 /**
- * Convert unix timestamp into time format
+ * Convert unix timestamp into 2 digit 24hrs time format
  * @input: 1616425200 (in ISO format: 2021-03-22T10:00:00Z)
  * @returns : 10 | 15 | 22 , etc
  */

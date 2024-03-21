@@ -11,7 +11,9 @@ export default function WeatherDescription({ summary }: Props) {
         <AccordionTrigger>Detailed Description</AccordionTrigger>
         <AccordionContent>
           <div className="py-3">
-            <span className="capitalize">{summary}.</span>
+            <span aria-label="weather-summary-text" className="capitalize">
+              {summary}.
+            </span>
           </div>
         </AccordionContent>
       </AccordionItem>

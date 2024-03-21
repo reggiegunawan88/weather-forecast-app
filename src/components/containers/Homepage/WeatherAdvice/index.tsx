@@ -2,11 +2,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { WeatherHelpers } from '@/helpers/WeatherHelpers'
 
 interface Props {
-  temp: number
-  weatherDesc: string
+  weatherId: number
 }
 
-export default function WeatherAdvice({ temp, weatherDesc }: Props) {
+export default function WeatherAdvice({ weatherId }: Props) {
   return (
     <Accordion className="rounded-lg bg-widget px-4" type="single" collapsible>
       <AccordionItem value="item-1">
@@ -14,7 +13,7 @@ export default function WeatherAdvice({ temp, weatherDesc }: Props) {
         <AccordionContent>
           <div className="py-3">
             <span aria-label="weather-advice-text" className="leading-6">
-              {WeatherHelpers.getWeatherAdvice({ temp, weatherDesc })}
+              {WeatherHelpers.getWeatherAdvice(weatherId)}
             </span>
           </div>
         </AccordionContent>

@@ -5,17 +5,19 @@ import { TemperatureHelpers } from '@/helpers/TemperatureHelpers'
 import { IDailyWeather } from '@/types/Weather'
 import Image from 'next/image'
 
-interface DailyForecastProps {
-  data: IDailyWeather[]
+type DailyForecastProps = Pick<IDailyWeather, 'dt' | 'weather' | 'temp'>
+
+interface Props {
+  data: DailyForecastProps[]
 }
 
-export default function DailyForecast({ data }: DailyForecastProps) {
+export default function DailyForecast({ data }: Props) {
   return (
     <Accordion className="rounded-lg bg-widget px-4" type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>5-DAY FORECAST</AccordionTrigger>
         <AccordionContent>
-          <div className="flex flex-col gap-y-2">
+          <div aria-label="daily-forecast-list" className="flex flex-col gap-y-2">
             {data.slice(0, 5).map((item) => (
               <DailyForecastWidget key={item.dt} data={item} />
             ))}
@@ -29,7 +31,7 @@ export default function DailyForecast({ data }: DailyForecastProps) {
 // Composing component
 // TODO: Refactor later if this component is used in multiple places
 interface DailyForecastWidgetProps {
-  data: IDailyWeather
+  data: DailyForecastProps
 }
 function DailyForecastWidget({ data }: DailyForecastWidgetProps) {
   return (
