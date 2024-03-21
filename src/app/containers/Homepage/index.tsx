@@ -31,11 +31,11 @@ export default function Homepage({ lat, lon }: HomepageProps) {
     <section>
       {/* Full screen background image */}
       <div className="fixed top-0 left-0 h-screen w-full -z-10">
-        <Image alt="bg-image" className="object-cover" src={weatherImageUrl} fill loading="lazy" />
+        <Image alt="bg-image" className="object-cover" src={weatherImageUrl} fill priority blurDataURL={weatherImageUrl} />
       </div>
 
       {/* Page contents */}
-      <div className="relative z-10 flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
+      <div className="flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
         <CurrentForecast data={forecast.current} />
         <HourlyForecast data={forecast.hourly} />
         <DailyForecast data={forecast.daily} />
