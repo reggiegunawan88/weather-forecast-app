@@ -14,6 +14,10 @@ export class DateTimeHelpers {
   static isToday({ unix }: { unix: number }) {
     return determineIsToday(unix)
   }
+
+  static isDaytime() {
+    return determineIsDaytime()
+  }
 }
 
 /**
@@ -48,7 +52,7 @@ function convertUnixTimestampToFullDate(unixTimestamp: number, short?: boolean):
 }
 
 /**
- * Convert unix timestamp into time format
+ * Convert unix timestamp into 2 digit 24hrs time format
  * @input: 1616425200 (in ISO format: 2021-03-22T10:00:00Z)
  * @returns : 10 | 15 | 22 , etc
  */
@@ -91,4 +95,10 @@ function determineIsToday(unix: number): boolean {
 
   // Return true if the dates are the same, indicating that the timestamp is for today
   return currentYear === timestampYear && currentMonth === timestampMonth && currentDay === timestampDay
+}
+
+function determineIsDaytime() {
+  const hours = new Date().getHours()
+
+  return hours >= 6 && hours < 18
 }

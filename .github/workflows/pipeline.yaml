@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - develop
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
+      NEXT_PUBLIC_GEOAPIFY_BASE_URL: ${{ secrets.NEXT_PUBLIC_GEOAPIFY_BASE_URL }}
+      NEXT_PUBLIC_OPEN_WEATHER_API_KEY: ${{ secrets.NEXT_PUBLIC_OPEN_WEATHER_API_KEY }}
+      NEXT_PUBLIC_UNSPLASH_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY }}
+      NEXT_PUBLIC_GEOAPIFY_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_GEOAPIFY_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and run tests
+        run: |
+          NODE_ENV=test npm test &&
+          npm run build
+
+  deploy:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/master'
+        run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
+        env:
+          CI: true
