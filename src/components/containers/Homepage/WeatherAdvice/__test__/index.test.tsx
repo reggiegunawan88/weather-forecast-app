@@ -3,18 +3,17 @@ import { fireEvent, render, waitFor } from '@testing-library/react'
 import WeatherAdvice from '../index'
 
 const mockData = {
-  tempMock: 26,
-  weatherDescMock: 'clear',
+  weatherId: 800,
 }
 
 describe('Weather Advice Component', () => {
   test('Render weather advice accordion', () => {
-    const { container } = render(<WeatherAdvice temp={mockData.tempMock} weatherDesc={mockData.weatherDescMock} />)
+    const { container } = render(<WeatherAdvice weatherId={mockData.weatherId} />)
     expect(container).toBeInTheDocument()
   })
 
   test('Test weather advice accordion click interaction', async () => {
-    const { getByRole, queryByLabelText } = render(<WeatherAdvice temp={mockData.tempMock} weatherDesc={mockData.weatherDescMock} />)
+    const { getByRole, queryByLabelText } = render(<WeatherAdvice weatherId={mockData.weatherId} />)
 
     // 1. Define accordion button
     const triggerBtn = getByRole('button')
