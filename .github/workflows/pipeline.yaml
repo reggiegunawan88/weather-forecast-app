@@ -10,6 +10,7 @@ env:
   # Setting an environment variable with the value of a configuration variable
   NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL: ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
 
+jobs:
   test-and-build:
     runs-on: ubuntu-latest
     steps:
