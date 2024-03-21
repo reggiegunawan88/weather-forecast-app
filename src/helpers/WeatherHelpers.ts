@@ -1,3 +1,5 @@
+import { DateTimeHelpers } from './DateTimeHelpers'
+
 export class WeatherHelpers {
   static getWeatherKeyword(keyword: string) {
     return WEATHER_TO_PHOTO_KEYWORDS[keyword]
@@ -13,8 +15,8 @@ interface WeatherKeywords {
 }
 
 export const WEATHER_TO_PHOTO_KEYWORDS: WeatherKeywords = {
-  clear: 'clear sky',
-  clouds: 'cloudy sky',
+  clear: DateTimeHelpers.isDaytime() ? 'clear sky' : 'night clear sky',
+  clouds: DateTimeHelpers.isDaytime() ? 'cloudy sky' : 'night clouds',
   rain: 'rainy',
   snow: 'snowy',
 }

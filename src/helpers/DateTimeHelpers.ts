@@ -14,6 +14,10 @@ export class DateTimeHelpers {
   static isToday({ unix }: { unix: number }) {
     return determineIsToday(unix)
   }
+
+  static isDaytime() {
+    return determineIsDaytime()
+  }
 }
 
 /**
@@ -91,4 +95,10 @@ function determineIsToday(unix: number): boolean {
 
   // Return true if the dates are the same, indicating that the timestamp is for today
   return currentYear === timestampYear && currentMonth === timestampMonth && currentDay === timestampDay
+}
+
+function determineIsDaytime() {
+  const hours = new Date().getHours()
+
+  return hours >= 6 && hours < 18
 }

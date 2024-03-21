@@ -1,4 +1,4 @@
-import { DropletIcon, WindIcon } from '@/components/Icons/TemperatureIcons'
+import { DropletIcon, WindIcon } from '@/components/common/Icons/TemperatureIcons'
 import { ENV_VARS_BASE_URL } from '@/constants/env-vars'
 import { DateTimeHelpers } from '@/helpers/DateTimeHelpers'
 import { TemperatureHelpers } from '@/helpers/TemperatureHelpers'
