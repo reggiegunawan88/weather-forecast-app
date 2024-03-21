@@ -24,7 +24,7 @@ jobs:
 
       - name: Test print env
         run: |
-          echo env name = ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
+          echo env name = ${{ env.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
           echo env test = $Test
 
       # - name: Install dependencies
