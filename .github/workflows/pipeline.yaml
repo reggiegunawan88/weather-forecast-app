@@ -10,7 +10,8 @@ on:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    environment: Preview
+    env:
+      NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Node.js 18
@@ -18,18 +19,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Read variable
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and run tests
         run: |
-          echo var name = ${{ vars.APP_NAME }}
-          echo env name = ${{ vars.OPEN_WEATHER_MAP_PUBLIC_API }}
-
-      - name: Read environment
-        run: echo env name = ${{ env.OPEN_WEATHER_MAP_PUBLIC_API }}
-
-      # - name: Install dependencies
-      #   run: npm install
-
-      # - name: Build and run tests
-      #   run: |
-      #     NODE_ENV=test npm test &&
-      #     npm run build
+          NODE_ENV=test npm test &&
+          npm run build
