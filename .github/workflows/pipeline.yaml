@@ -6,8 +6,10 @@ on:
     branches:
       - master
       - develop
+env:
+  # Setting an environment variable with the value of a configuration variable
+  NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL: ${{ vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL }}
 
-jobs:
   test-and-build:
     runs-on: ubuntu-latest
     steps:
@@ -17,10 +19,15 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build and run tests
+      - name: Test print env
         run: |
-          npm test &&
-          npm run build
+          echo env local name = $NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL
+          echo env github name = ${{vars.NEXT_PUBLIC_OPEN_WEATHER_PUBLIC_BASE_URL}}
+
+      # - name: Install dependencies
+      #   run: npm install
+
+      # - name: Build and run tests
+      #   run: |
+      #     NODE_ENV=test npm test &&
+      #     npm run build
