@@ -1,3 +1,4 @@
+// Next.js built-in config
 const nextJest = require('next/jest')
 
 /** @type {import('jest').Config} */
