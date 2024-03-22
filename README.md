@@ -55,8 +55,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 5. SWR by Vercel (https://swr.vercel.app/docs/api): For client side data fetching and caching.
 6. OpenWeatherMap API (https://openweathermap.org/api/one-call-3): API endpoint for fetching weather forecasts.
 7. Unsplash API (https://unsplash.com/documentation#search-photos): API endpoint for dynamic background image based on weather condition.
-8. Geoapify API (https://www.geoapify.com/): API endpoint for fetching user current location precisely.
-9. React Testing Library (https://testing-library.com/docs/): For unit test needs.
+8. React Testing Library (https://testing-library.com/docs/): For unit testing needs.
 
 ## Application Features and Functionalities
 
@@ -77,6 +76,78 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Provide fully responsive (but mobile-first) for an optimal viewing experience across a wide range of devices.
 
 ## Project Structure
+
+The project folder structure is represent by this tree-folder.
+
+```bash
+├── public
+├── src
+│ ├── app                       : NextJS App Routing
+│ │ ├── containers              : Pages UI containers
+│ │ │   └── [container-name]
+│ │ │   └── hooks               : Dedicated custom hooks for the container
+│ │ │
+│ │ ├── favicon.ico
+│ │ ├── layout.tsx              : NextJS root layout
+│ │ ├── loading.tsx             : Main page loading UI
+│ │ └── page.tsx                : Main page route
+│ │
+│ ├── components                : Project shared components
+│ │   ├── common
+│ │   ├── containers
+│ │ │   └── [component-container-scope]
+│ │ │   ├── **test**            : Dedicated test files for shared components
+│ │ │   └── index.tsx
+│ │ │
+│ │ └── ui                      : Shadcn UI component base
+│ │
+│ ├── constants                 : Shared constants file
+│ │   ├── [const].ts
+│ │   └── mocks                 : Mock constant for testing needs
+│ │
+│ ├── helpers                   : Shared helpers function
+│ │   ├── [helper].ts
+│ │   └── **test**              : Dedicated test files for helpers
+│ │     └── index.test.tsx
+│ │
+│ ├── hooks                     : Shared custom hooks
+│ │ ├── common
+│ │ │   ├── **test**            : Dedicated test files for custom hooks
+│ │ │   │ └── index.test.tsx
+│ │ │   └── [hooks].ts
+│ │ │
+│ ├── lib                       : Shared SDKs/libs
+│ │   └── utils.ts
+│ │
+│ ├── services                  : Shared services
+│ │   └── **test**              : Dedicated test files for shared services
+│ │     └── index.test.tsx
+│ │   ├── fetcher.ts
+│ │   └── queries               : Folder for URL queries functions
+│ │
+│ ├── styles                    : Global styles
+│ │   ├── common.css
+│ │   └── globals.css
+│ │
+│ └── types                     : Types for shared UI or data structure
+│     └── [type].ts
+│
+├── .env.example          : Example of local environment variables
+├── .eslintrc.json        : Configuration file for ESLint
+├── .gitignore            : Git files and folders to ignore
+├── .prettierrc           : Configuration file for IDE Prettier
+├── components.json       : Configuration file for Shadcn UI
+├── jest.config.js        : Configuration file for React Testing Library - Jest
+├── jest.setup.js         : Built in library for React Testing Library
+├── next-env.d.ts         : TypeScript declaration file for Next.js
+├── next.config.mjs       : Configuration file for Next.js
+├── package-lock.json
+├── package.json          : Project dependencies and scripts
+├── postcss.config.js     : Configuration file for Tailwind Postcss
+├── README.md             : Project documentation
+├── tailwind.config.ts:   : Configuration file for Tailwind
+└── tsconfig.json         : Configuration file for TypeScript
+```
 
 ## Screenshots
 
@@ -101,6 +172,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Additional Reference
 
 - Screen viewport: https://web.dev/blog/viewport-units?source=post_page-----102231e2ed56--------------------------------
+- React design patterns: https://radixweb.com/blog/react-design-patterns
 
 ## Deployment
 
