@@ -1,13 +1,13 @@
 import Homepage from '@/app/containers/Homepage'
-import HomepageSkeleton from '@/components/common/Skeleton/HomepageSkeleton'
 import { Suspense } from 'react'
+import Loading from './loading'
 
-export default async function Home() {
+export default function Home() {
   return (
-    <main className="flex-1 overflow-auto p-4 text-white">
-      <Suspense fallback={<HomepageSkeleton />}>
+    <Suspense fallback={<Loading />}>
+      <main className="flex-1 overflow-auto p-4 text-white">
         <Homepage />
-      </Suspense>
-    </main>
+      </main>
+    </Suspense>
   )
 }
