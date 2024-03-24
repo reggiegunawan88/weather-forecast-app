@@ -53,7 +53,7 @@ function DailyForecastWidget({ data }: DailyForecastWidgetProps) {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-y-1 items-center">
+      <div className="flex flex-col gap-y-1 items-end">
         <span>
           {TemperatureHelpers.getExactTemperature(data.temp.max)}&deg; / {TemperatureHelpers.getExactTemperature(data.temp.min)}&deg;
         </span>
