@@ -1,3 +1,7 @@
+.homepage-container {
+  @apply max-w-screen-laptopM laptopM:mx-auto;
+}
+
 .bg-widget {
   @apply bg-slate-600/40;
 }

@@ -32,7 +32,7 @@ export default function Homepage() {
       </div>
 
       {/* Page contents */}
-      <div className="flex flex-col gap-y-4 max-w-screen-laptopM laptopM:mx-auto">
+      <div className="homepage-container flex flex-col gap-y-4">
         <CurrentForecast data={forecast.current} />
         <HourlyForecast data={forecast.hourly} />
         <DailyForecast data={forecast.daily} />
