@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('flex flex-col h-dvh bg-slate-400', inter.className)}>
+      <body className={cn('flex flex-col h-dvh bg-slate-800', inter.className)}>
         <Header />
         {children}
         <Footer />
