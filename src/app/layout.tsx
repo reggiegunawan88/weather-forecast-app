@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 
 import Footer from '@/components/common/Footer'
@@ -11,6 +11,14 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Weather App',
   description: 'Daily Weather App by Reggie Gunawan',
+  manifest: '/manifest.json',
+}
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  minimumScale: 1,
+  viewportFit: 'cover',
+  themeColor: 'black',
 }
 
 export default function RootLayout({
@@ -20,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('flex flex-col h-dvh bg-slate-800', inter.className)}>
+      <body className={cn('flex flex-col h-dvh bg-slate-400', inter.className)}>
         <Header />
         {children}
         <Footer />
